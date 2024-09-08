@@ -1,4 +1,4 @@
-package com.csec.csecandr           oidapp
+package com.csec.csecandroidapp
 
 sealed class Screens(val screen: String) {
 

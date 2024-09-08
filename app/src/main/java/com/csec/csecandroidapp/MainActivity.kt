@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -42,7 +43,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.CSEC.csecandroidapp.ui.theme.CsecAndroidAppTheme
+import com.csec.csecandroidapp.ui.theme.CsecAndroidAppTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -54,7 +55,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.secondary
                 ) {
                     CsecNav()
                 }
@@ -129,7 +130,7 @@ fun CsecNav() {
 
                     item {
                         NavigationDrawerItem(
-                            label = { Text("Events") },
+                            label = { Text("Calendar") },
                             selected = false,
                             onClick = {
                                 scope.launch {
@@ -137,7 +138,7 @@ fun CsecNav() {
                                     navigationController.navigate(Screens.Calendar.screen)
                                 }
                             },
-                            icon = { Icon(Icons.Default.DateRange, contentDescription = "Events") }
+                            icon = { Icon(Icons.Default.DateRange, contentDescription = "Calendar") }
                         )
                     }
 
@@ -152,13 +153,13 @@ fun CsecNav() {
                 CenterAlignedTopAppBar(
                     //colors for nav bar
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.primary,
+                        containerColor = MaterialTheme.colorScheme.,
+                        titleContentColor = MaterialTheme.colorScheme.secondary,
                     ),
                     //title for bar
                     title = {
                         Text(
-                            "MobiByte",
+                            "",
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )

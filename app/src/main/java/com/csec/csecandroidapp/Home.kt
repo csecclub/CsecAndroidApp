@@ -1,5 +1,6 @@
 package com.csec.csecandroidapp
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,10 +28,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.CSEC.csecandroidapp.R
+import com.csec.csecandroidapp.ui.theme.CsecAndroidAppTheme
 
 @Composable
 fun Home(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -46,7 +51,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier) {
             item {
                 Box(
                     modifier = Modifier
-                        .padding(5.dp)
+                        .padding(top = 20.dp, bottom = 20.dp)
                         .scale(1.5f)
                         .size(150.dp)
                         // 2. Box for Image Shaping
@@ -54,7 +59,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier) {
                     contentAlignment = Alignment.Center
                 ) {
                     AsyncImage(
-                        model = R.drawable.ic_launcher_foreground,
+                        model = R.drawable.hackercat,
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
@@ -76,12 +81,12 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "MOBI",
+                            text = "CSEC",
                             modifier = Modifier.padding(top = 16.dp),
                             style = MaterialTheme.typography.headlineLarge
                         )
                         Text(
-                            text = "Discover Magic of Making Apps!",
+                            text = "Relax, connect, and enhance cybersecurity!",
                             modifier = Modifier.padding(16.dp),
                             style = MaterialTheme.typography.titleLarge
                         )
@@ -106,12 +111,13 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier) {
                             onClick = { openUrl("https://discord.com/invite/pjjgRC7ErT", context) }
                         ) {
                             Text(
-                                text = "BECOME A MOBI MEMBER! \uD83D\uDE80",
+                                text = "Become a member",
                                 modifier = Modifier.padding(16.dp),
                                 style = MaterialTheme.typography.titleLarge,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.onSurface
                             )
+                            Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "button")
                         }
                     }
                 }
