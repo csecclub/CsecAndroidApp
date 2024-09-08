@@ -21,38 +21,6 @@ import coil.compose.AsyncImage
 import com.CSEC.csecandroidapp.R
 
 
-@Composable
-fun AboutTemplate(title: String, description: String, img: Int) {
-    Surface(
-        color = MaterialTheme.colorScheme.secondaryContainer,
-        shape = MaterialTheme.shapes.medium,
-        modifier = Modifier.fillMaxWidth()
-            .padding(10.dp)
-    ) {
-        Column {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(10.dp)
-            )
-
-            Divider(thickness = 3.dp, color = MaterialTheme.colorScheme.outline)
-
-            Text(
-                text = description,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(10.dp)
-            )
-
-            AsyncImage(
-                model = img,
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.padding(5.dp)
-            )
-        }
-    }
-}
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,3 +76,38 @@ fun About(navController: NavHostController) {
         }
     }
 }
+
+
+@Composable
+fun AboutTemplate(title: String, description: String, img: Int) {
+    Surface(
+        color = MaterialTheme.colorScheme.secondaryContainer,
+        shape = MaterialTheme.shapes.medium,
+        modifier = Modifier.fillMaxWidth()
+            .padding(10.dp)
+    ) {
+        Column {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.headlineLarge,
+                modifier = Modifier.padding(10.dp)
+            )
+
+            Divider(thickness = 3.dp, color = MaterialTheme.colorScheme.outline)
+
+            Text(
+                text = description,
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(10.dp)
+            )
+
+            AsyncImage(
+                model = img,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.padding(5.dp)
+            )
+        }
+    }
+}
+                

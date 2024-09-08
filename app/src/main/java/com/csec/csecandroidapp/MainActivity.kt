@@ -3,6 +3,8 @@ package com.csec.csecandroidapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -34,8 +36,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -43,7 +49,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.CSEC.csecandroidapp.R
 import com.csec.csecandroidapp.ui.theme.CsecAndroidAppTheme
+import com.csec.csecandroidapp.ui.theme.dark_blue_csec
+import com.csec.csecandroidapp.ui.theme.light_blue_csec
+import com.csec.csecandroidapp.ui.theme.med_blue_csec
+import com.csec.csecandroidapp.ui.theme.teal_csec
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -51,11 +62,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            CsecAndroidAppTheme {
+            CsecAndroidAppTheme(dynamicColor = false) {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     CsecNav()
                 }
@@ -85,7 +96,9 @@ fun CsecNav() {
                     modifier = Modifier.padding(top = 16.dp, end = 30.dp, bottom = 16.dp),
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
+                    //items within drawer
 
+                    //home
                     item {
                         NavigationDrawerItem(
                             label = { Text("Home") },
@@ -100,6 +113,7 @@ fun CsecNav() {
                         )
                     }
 
+                    //about
                     item {
                         NavigationDrawerItem(
                             label = { Text("About") },
@@ -114,6 +128,7 @@ fun CsecNav() {
                         )
                     }
 
+                    //officers
                     item {
                         NavigationDrawerItem(
                             label = { Text("Officers") },
@@ -128,6 +143,7 @@ fun CsecNav() {
                         )
                     }
 
+                    //calendar
                     item {
                         NavigationDrawerItem(
                             label = { Text("Calendar") },
@@ -150,12 +166,16 @@ fun CsecNav() {
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
+                val darkTheme = isSystemInDarkTheme()
+
                 CenterAlignedTopAppBar(
                     //colors for nav bar
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.,
-                        titleContentColor = MaterialTheme.colorScheme.secondary,
+//                        containerColor = if (darkTheme) { dark_blue_csec } else { teal_csec  },
+
+                        containerColor = Color.Transparent
                     ),
+
                     //title for bar
                     title = {
                         Text(
@@ -164,6 +184,8 @@ fun CsecNav() {
                             overflow = TextOverflow.Ellipsis
                         )
                     },
+
+                    //previous screen button
                     navigationIcon = {
                         IconButton(onClick = { navigationController.navigateUp() }) {
                             Icon(
